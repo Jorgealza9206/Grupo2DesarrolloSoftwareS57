@@ -16,56 +16,28 @@ import persistencia.ConexionBD;
  * @author Alex
  */
 public class Contacto {
-    private int identificacion;
-    private String nombre;
-    private String apellido;
-    private String genero;
-    private String tipoIdentificacion;
-    private String telefono;
+        private int idParqueadero;
     private String direccion;
-    private String correo;
+    private int plazasTotales;
+    private int plazasCarro;
+    private int plazasMoto;
+    private int plazasBici;
+    private int carro;
+    private int moto;
+    private int bici;
+    private float tarifaCarro;
+    private float tarifaMoto;
+    private float tarifaBici;
 
     public Contacto() {
     }
 
-    public int getIdentificacion() {
-        return identificacion;
+    public int getIdParqueadero() {
+        return idParqueadero;
     }
 
-    public void setIdentificacion(int identificacion) {
-        this.identificacion = identificacion;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getTipoIdentificacion() {
-        return tipoIdentificacion;
-    }
-
-    public void setTipoIdentificacion(String tipoIdentificacion) {
-        this.tipoIdentificacion = tipoIdentificacion;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setIdParqueadero(int idParqueadero) {
+        this.idParqueadero = idParqueadero;
     }
 
     public String getDireccion() {
@@ -76,20 +48,84 @@ public class Contacto {
         this.direccion = direccion;
     }
 
-    public String getCorreo() {
-        return correo;
+    public int getPlazasTotales() {
+        return plazasTotales;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setPlazasTotales(int plazasTotales) {
+        this.plazasTotales = plazasTotales;
     }
 
-    public String getGenero() {
-        return genero;
+    public int getPlazasCarro() {
+        return plazasCarro;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
+    public void setPlazasCarro(int plazasCarro) {
+        this.plazasCarro = plazasCarro;
+    }
+
+    public int getPlazasMoto() {
+        return plazasMoto;
+    }
+
+    public void setPlazasMoto(int plazasMoto) {
+        this.plazasMoto = plazasMoto;
+    }
+
+    public int getPlazasBici() {
+        return plazasBici;
+    }
+
+    public void setPlazasBici(int plazasBici) {
+        this.plazasBici = plazasBici;
+    }
+
+    public int getCarro() {
+        return carro;
+    }
+
+    public void setCarro(int carro) {
+        this.carro = carro;
+    }
+
+    public int getMoto() {
+        return moto;
+    }
+
+    public void setMoto(int moto) {
+        this.moto = moto;
+    }
+
+    public int getBici() {
+        return bici;
+    }
+
+    public void setBici(int bici) {
+        this.bici = bici;
+    }
+
+    public float getTarifaCarro() {
+        return tarifaCarro;
+    }
+
+    public void setTarifaCarro(float tarifaCarro) {
+        this.tarifaCarro = tarifaCarro;
+    }
+
+    public float getTarifaMoto() {
+        return tarifaMoto;
+    }
+
+    public void setTarifaMoto(float tarifaMoto) {
+        this.tarifaMoto = tarifaMoto;
+    }
+
+    public float getTarifaBici() {
+        return tarifaBici;
+    }
+
+    public void setTarifaBici(float tarifaBici) {
+        this.tarifaBici = tarifaBici;
     }
     
     
