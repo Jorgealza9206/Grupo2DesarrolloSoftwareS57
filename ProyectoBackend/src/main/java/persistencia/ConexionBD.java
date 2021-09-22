@@ -26,7 +26,7 @@ public class ConexionBD {
     public ConexionBD() {
         DB_driver = "com.mysql.jdbc.Driver";
         host = "localhost:3306";
-        db = "easyparking";
+        db = "ejemplos";
         url = "jdbc:mysql://" + host + "/" + db;
         username = "root";
         password = "";
