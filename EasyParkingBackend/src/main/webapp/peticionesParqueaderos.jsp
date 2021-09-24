@@ -9,7 +9,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <% 
-    String respuesta = "{";
+    String respuesta =  "{";
     String proceso = request.getParameter("proceso");
     Parqueaderos c = new Parqueaderos(); //se piden los parámetros del contacto que se quiere guardar
     
