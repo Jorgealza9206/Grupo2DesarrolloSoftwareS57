@@ -249,27 +249,10 @@ public class Parqueadero {
     }
 
     public boolean ingresoCarro(int contador){
-        ConexionBD conexion = new ConexionBD();
+        obtenerParqueadero();
         this.carro = this.carro + contador;
-        String sentencia = "UPDATE `parqueadero` SET direccion='" + this.direccion + "',plazasTotales='" + this.plazasTotales
-                + "',plazasCarro='" + this.plazasCarro + "',plazasMoto='" + this.plazasMoto + "',plazasBici='" + this.plazasBici + "',carro='" + this.carro
-                + "',moto='" + this.moto + "',bici='" + this.bici + "',tarifaCarro='" + this.tarifaCarro + "',tarifaMoto='" + this.tarifaMoto + "',tarifaBici='" + this.tarifaBici
-                +  "' WHERE idParqueadero=" + this.idParqueadero + ";";
-        
-        if(conexion.setAutoCommitBD(false)){
-            if(conexion.actualizarBD(sentencia)){
-                conexion.commitBD();
-                conexion.closeConnection();
-                return true;
-            }else{
-                conexion.rollbackBD();
-                conexion.closeConnection();
-                return false;
-            }
-        }else{
-            conexion.closeConnection();
-            return false;
-        }
+        actualizarParqueadero();
+
     }
 
     public boolean salirCarro(int contador){
