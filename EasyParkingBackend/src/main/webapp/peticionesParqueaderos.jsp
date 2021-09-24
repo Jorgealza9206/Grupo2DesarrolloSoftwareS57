@@ -5,11 +5,9 @@
 --%>
 <%@page import="com.google.gson.Gson"%>
 <%@page import="java.util.List"%>
-<%@page import="logica.Parqueaderos"%>
+<%@page import="logica.Parqueadero"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-
-Hola Mundo
 
 <% 
     String respuesta =  "{";
@@ -17,7 +15,7 @@ Hola Mundo
     Parqueaderos c = new Parqueaderos(); //se piden los parámetros del contacto que se quiere guardar
     
     switch(proceso){
-        case "guardarParqueaderos":
+        case "guardarParqueadero":
             System.out.println("Guardar Parqueadero");
             c.setIdParqueadero(Integer.parseInt(request.getParameter("idParqueadero")));
             c.setDireccion(request.getParameter("direccion"));
@@ -32,7 +30,7 @@ Hola Mundo
             c.setTarifaMoto(Float.parseFloat(request.getParameter("tarifaMoto")));
             c.setTarifaBici(Float.parseFloat(request.getParameter("tarifaBici")));
 
-            if(c.guardarParqueaderos()){
+            if(c.guardarParqueadero()){
                 //si guarda bien el contacto, se concatena otros datos para el json
                 respuesta += "\"" + proceso + "\": true";  // el \ se usa para concatenar en json indicando que se hizo el proceso (true)
             } else{
@@ -40,7 +38,7 @@ Hola Mundo
             }
 
             break;
-        case "actualizarParqueaderos":
+        case "actualizarParqueadero":
 
             System.out.println("Actualizar Parqueaderos");
             c.setIdParqueadero(Integer.parseInt(request.getParameter("idParqueadero")));//a este hay que convertirlo de entero a string
@@ -56,7 +54,7 @@ Hola Mundo
             c.setTarifaMoto(Float.parseFloat(request.getParameter("tarifaMoto")));
             c.setTarifaBici(Float.parseFloat(request.getParameter("tarifaBici")));
 
-            if(c.actualizarParqueaderos()){
+            if(c.actualizarParqueadero()){
                 //si guarda bien el contacto, se concatena otros datos para el json
                 respuesta += "\"" + proceso + "\": true";  // el \ se usa para concatenar en json indicando que se hizo el proceso (true)
             } else{
@@ -66,19 +64,19 @@ Hola Mundo
 
 
             break;
-        case "eliminarParqueaderos":
+        case "borrarParqueaderos":
             System.out.println("Eliminar contacto");
             int idParqueadero = Integer.parseInt(request.getParameter("idParqueadero"));
-            if(c.borrarParqueaderos(idParqueadero)){
+            if(c.borrarParqueadero(idParqueadero)){
              respuesta += "\"" + proceso + "\": true";  // el \ se usa para concatenar en json indicando que se hizo el proceso (true)
             } else{
                 respuesta += "\"" + proceso + "\": false";  // el \ se usa para concatenar en json indicando que NO se hizo el proceso (false)
             }
 
             break;
-        case "listarParquederos":
+        case "listarParquedero":
             System.out.println("Listar Parquederos");
-            List<Parqueaderos> listaParqueaderos = c.listarParqueaderos();
+            List<Parqueaderos> listaParqueaderos = c.listarParqueadero();
             if(listaParqueaderos.isEmpty()){
                 respuesta += "\"" + proceso + "\": true,\"parqueadero\":[]"; //genera una lista vacía en el json
             } else{
@@ -86,8 +84,6 @@ Hola Mundo
             }
 
             break;
-        //case "listarUnContacto":
-        //    break;
 
         default:
             respuesta += "\"ok\": false,";
