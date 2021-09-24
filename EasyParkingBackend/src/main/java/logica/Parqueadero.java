@@ -13,7 +13,7 @@ import persistencia.ConexionBD;
 
 /**
  *
- * @author Alex
+ * @author Aquí el auto es alguien
  */
 public class Parqueadero {
     private int idParqueadero;
