@@ -8,6 +8,9 @@
 <%@page import="logica.Parqueaderos"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+
+Hola Mundo
+
 <% 
     String respuesta =  "{";
     String proceso = request.getParameter("proceso");
