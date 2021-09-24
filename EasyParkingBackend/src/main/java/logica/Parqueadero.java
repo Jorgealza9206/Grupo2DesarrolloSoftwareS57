@@ -129,11 +129,11 @@ public class Parqueadero {
     }
     
     
-    public boolean guardarContacto(){
+    public boolean guardarParqueadero(){
         ConexionBD conexion = new ConexionBD();
         String sentencia = "INSERT INTO parqueadero(idParqueadero, direccion, plazasTotales, plazasCarro,plazasMoto,plazasBici,"
                 +"carro,moto,bici,tarifaCarro,tarifaMoto,tarifaBici)"
-                +"VALUES('"+this.idParqueadero+"','"+this.direccion+"','"+this.plazasTotales+"','"+this.plazasCarro+"','"+ this.plazasMoto + "','" + this.plazasBici
+                +"VALUES('"+this.idParqueadero+"','"+this.direccion+"','"+ this.plazasTotales +"','"+this.plazasCarro+"','"+ this.plazasMoto + "','" + this.plazasBici
                 + "',"+ "'" + this.carro + "','" + this.moto + "','" + this.bici + "','" + this.tarifaCarro + "','" 
                 + this.tarifaMoto + "','" + this.tarifaBici + "');  ";
         
@@ -154,7 +154,7 @@ public class Parqueadero {
 
     }
     
-    public boolean borrarContacto(int Identificacion){
+    public boolean borrarParqueadero(int idParqueadero){
         ConexionBD conexion = new ConexionBD();
         String sentencia = "DELETE FROM parqueadero WHERE idParqueadero = '" + this.idParqueadero+"'";
         
@@ -174,7 +174,7 @@ public class Parqueadero {
         }
     }
     
-    public boolean actualizarContacto(){
+    public boolean actualizarParqueadero(){
         ConexionBD conexion = new ConexionBD();
         String sentencia = "UPDATE `parqueadero` SET direccion='" + this.direccion + "',plazasTotales='" + this.plazasTotales
                 + "',plazasCarro='" + this.plazasCarro + "',plazasMoto='" + this.plazasMoto + "',plazasBici='" + this.plazasBici + "',carro='" + this.carro
@@ -224,7 +224,7 @@ public class Parqueadero {
     
     public Parqueadero obtenerParqueadero() throws SQLException{
         ConexionBD conexion = new ConexionBD();
-        String sentencia = "SELECT * FROM contactos WHERE identificacion ='"+idParqueadero+"'";
+        String sentencia = "SELECT * FROM parqueadero WHERE idParqueadero ='"+idParqueadero+"'";
         ResultSet rs = conexion.consultarBD(sentencia);
         if(rs.next()){
             Parqueadero p = new Parqueadero();
