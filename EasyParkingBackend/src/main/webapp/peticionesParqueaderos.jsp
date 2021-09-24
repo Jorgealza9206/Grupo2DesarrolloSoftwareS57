@@ -12,7 +12,7 @@
 <% 
     String respuesta =  "{";
     String proceso = request.getParameter("proceso");
-    Parqueaderos c = new Parqueaderos(); //se piden los parámetros del contacto que se quiere guardar
+    Parqueadero c = new Parqueadero(); //se piden los parámetros del contacto que se quiere guardar
     
     switch(proceso){
         case "guardarParqueadero":
@@ -64,7 +64,7 @@
 
 
             break;
-        case "borrarParqueaderos":
+        case "borrarParqueadero":
             System.out.println("Eliminar contacto");
             int idParqueadero = Integer.parseInt(request.getParameter("idParqueadero"));
             if(c.borrarParqueadero(idParqueadero)){
