@@ -1,7 +1,7 @@
 <%-- 
     Document   : peticionesParqueaderos
     Created on : 23/09/2021, 03:15:49 PM
-    Author     : CAMILO
+    Author     : CAMILO AND FREIRE AND JORGE
 --%>
 <%@page import="com.google.gson.Gson"%>
 <%@page import="java.util.List"%>
@@ -76,7 +76,7 @@
             break;
         case "listarParquedero":
             System.out.println("Listar Parquederos");
-            List<Parqueaderos> listaParqueaderos = c.listarParqueadero();
+            List<Parqueadero> listaParqueaderos = c.listarParqueadero();
             if(listaParqueaderos.isEmpty()){
                 respuesta += "\"" + proceso + "\": true,\"parqueadero\":[]"; //genera una lista vacía en el json
             } else{

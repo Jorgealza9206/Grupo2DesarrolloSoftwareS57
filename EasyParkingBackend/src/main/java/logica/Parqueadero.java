@@ -52,8 +52,8 @@ public class Parqueadero {
         return plazasTotales;
     }
 
-    public void setPlazasTotales(int plazasCarro, int plazasMoto, int plazasBici) {
-        this.plazasTotales = this.plazasCarro+this.plazasMoto+this.plazasBici;
+    public void setPlazasTotales(int plazasTotales) {
+        this.plazasTotales = plazasTotales;
     }
 
     public int getPlazasCarro() {
@@ -206,7 +206,7 @@ public class Parqueadero {
             Parqueadero p = new Parqueadero();
             p.setIdParqueadero(rs.getInt("idParqueadero"));
             p.setDireccion(rs.getString("direccion"));
-            p.setPlazasTotales(rs.getInt("plazasCarro"),rs.getInt("plazasMoto"),rs.getInt("plazasBici"));
+            p.setPlazasTotales(rs.getInt("plazasTotales"));
             p.setPlazasCarro(rs.getInt("plazasCarro"));
             p.setPlazasMoto(rs.getInt("plazasMoto"));
             p.setPlazasBici(rs.getInt("plazasBici"));
@@ -230,7 +230,7 @@ public class Parqueadero {
             Parqueadero p = new Parqueadero();
             p.setIdParqueadero(rs.getInt("idParqueadero"));
             p.setDireccion(rs.getString("direccion"));
-            p.setPlazasTotales(rs.getInt("plazasCarro"),rs.getInt("plazasMoto"),rs.getInt("plazasBici"));
+            p.setPlazasTotales(rs.getInt("plazasTotales"));
             p.setPlazasCarro(rs.getInt("plazasCarro"));
             p.setPlazasMoto(rs.getInt("plazasMoto"));
             p.setPlazasBici(rs.getInt("plazasBici"));
