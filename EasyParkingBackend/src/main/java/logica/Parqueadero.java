@@ -15,8 +15,8 @@ import persistencia.ConexionBD;
  *
  * @author Alex
  */
-public class Contacto {
-        private int idParqueadero;
+public class Parqueadero {
+    private int idParqueadero;
     private String direccion;
     private int plazasTotales;
     private int plazasCarro;
@@ -29,7 +29,7 @@ public class Contacto {
     private float tarifaMoto;
     private float tarifaBici;
 
-    public Contacto() {
+    public Parqueadero() {
     }
 
     public int getIdParqueadero() {
@@ -52,8 +52,8 @@ public class Contacto {
         return plazasTotales;
     }
 
-    public void setPlazasTotales(int plazasTotales) {
-        this.plazasTotales = plazasTotales;
+    public void setPlazasTotales(int plazasCarro, int plazasMoto, int plazasBici) {
+        this.plazasTotales = this.plazasCarro+this.plazasMoto+this.plazasBici;
     }
 
     public int getPlazasCarro() {
@@ -129,12 +129,13 @@ public class Contacto {
     }
     
     
-    
     public boolean guardarContacto(){
         ConexionBD conexion = new ConexionBD();
-        String sentencia = "INSERT INTO contactos(identificacion, nombre, apellido, genero,tipodeidentificacion,telefono,direccion,correo)"
-                +"VALUES('"+this.identificacion+"','"+this.nombre+"','"+this.apellido+"','"+ this.genero + "','" + this.tipoIdentificacion + "',"
-                + "'" + this.telefono + "','" + this.direccion + "','" + this.correo +  "');  ";
+        String sentencia = "INSERT INTO parqueadero(idParqueadero, direccion, plazasTotales, plazasCarro,plazasMoto,plazasBici,"
+                +"carro,moto,bici,tarifaCarro,tarifaMoto,tarifaBici)"
+                +"VALUES('"+this.idParqueadero+"','"+this.direccion+"','"+this.plazasTotales+"','"+this.plazasCarro+"','"+ this.plazasMoto + "','" + this.plazasBici
+                + "',"+ "'" + this.carro + "','" + this.moto + "','" + this.bici + "','" + this.tarifaCarro + "','" 
+                + this.tarifaMoto + "','" + this.tarifaBici + "');  ";
         
         if(conexion.setAutoCommitBD(false)){
             if(conexion.insertarBD(sentencia)){
@@ -155,7 +156,7 @@ public class Contacto {
     
     public boolean borrarContacto(int Identificacion){
         ConexionBD conexion = new ConexionBD();
-        String sentencia = "DELETE FROM contactos WHERE identificacion = '" + identificacion+"'";
+        String sentencia = "DELETE FROM parqueadero WHERE idParqueadero = '" + this.idParqueadero+"'";
         
         if(conexion.setAutoCommitBD(false)){
             if(conexion.borrarBD(sentencia)){
@@ -175,9 +176,10 @@ public class Contacto {
     
     public boolean actualizarContacto(){
         ConexionBD conexion = new ConexionBD();
-        String sentencia = "UPDATE `contactos` SET nombre='" + this.nombre + "',apellido='" + this.apellido + "',genero='" + this.genero
-                + "',tipoIdentificacion='" + this.tipoIdentificacion + "',telefono='" + this.telefono + "',direccion='" + this.direccion + "',correo='" + this.correo
-                +  "' WHERE identificacion=" + this.identificacion + ";";
+        String sentencia = "UPDATE `parqueadero` SET direccion='" + this.direccion + "',plazasTotales='" + this.plazasTotales
+                + "',plazasCarro='" + this.plazasCarro + "',plazasMoto='" + this.plazasMoto + "',plazasBici='" + this.plazasBici + "',carro='" + this.carro
+                + "',moto='" + this.moto + "',bici='" + this.bici + "',tarifaCarro='" + this.tarifaCarro + "',tarifaMoto='" + this.tarifaMoto + "',tarifaBici='" + this.tarifaBici
+                +  "' WHERE idParqueadero=" + this.idParqueadero + ";";
         
         if(conexion.setAutoCommitBD(false)){
             if(conexion.actualizarBD(sentencia)){
@@ -195,43 +197,51 @@ public class Contacto {
         }
     }
     
-    public List<Contacto> listarContacto() throws SQLException{
+    public List<Parqueadero> listarParqueadero() throws SQLException{
         ConexionBD conexion = new ConexionBD();
-        String sentencia = "SELECT * FROM contactos ORDER BY identificacion ASC";
-        List<Contacto> listaContactos = new ArrayList<>();
+        String sentencia = "SELECT * FROM parqueadero ORDER BY idParqueadero ASC";
+        List<Parqueadero> listaParqueadero = new ArrayList<>();
         ResultSet rs = conexion.consultarBD(sentencia);
         while(rs.next()){
-            Contacto c = new Contacto();
-            c.setIdentificacion(rs.getInt("identificacion"));
-            c.setNombre(rs.getString("nombre"));
-            c.setApellido(rs.getString("apellido"));
-            c.setGenero(rs.getString("genero"));
-            c.setTipoIdentificacion(rs.getString("tipoIdentificacion"));
-            c.setTelefono(rs.getString("telefono"));
-            c.setDireccion(rs.getString("direccion"));
-            c.setCorreo(rs.getString("correo"));
-            listaContactos.add(c);
+            Parqueadero p = new Parqueadero();
+            p.setIdParqueadero(rs.getInt("idParqueadero"));
+            p.setDireccion(rs.getString("direccion"));
+            p.setPlazasTotales(rs.getInt("plazasCarro"),rs.getInt("plazasMoto"),rs.getInt("plazasBici"));
+            p.setPlazasCarro(rs.getInt("plazasCarro"));
+            p.setPlazasMoto(rs.getInt("plazasMoto"));
+            p.setPlazasBici(rs.getInt("plazasBici"));
+            p.setCarro(rs.getInt("carro"));
+            p.setMoto(rs.getInt("moto"));
+            p.setBici(rs.getInt("bici"));
+            p.setTarifaCarro(rs.getInt("tarifaCarro"));
+            p.setTarifaMoto(rs.getInt("tarifaMoto"));
+            p.setTarifaBici(rs.getInt("tarifaBici"));
+            listaParqueadero.add(p);
         }
         conexion.closeConnection();
-        return listaContactos;        
+        return listaParqueadero;        
     }
     
-    public Contacto obtenerContacto() throws SQLException{
+    public Parqueadero obtenerParqueadero() throws SQLException{
         ConexionBD conexion = new ConexionBD();
-        String sentencia = "SELECT * FROM contactos WHERE identificacion ='"+identificacion+"'";
+        String sentencia = "SELECT * FROM contactos WHERE identificacion ='"+idParqueadero+"'";
         ResultSet rs = conexion.consultarBD(sentencia);
         if(rs.next()){
-            Contacto c = new Contacto();
-            c.setIdentificacion(rs.getInt("identificacion"));
-            c.setNombre(rs.getString("nombre"));
-            c.setApellido(rs.getString("apellido"));
-            c.setGenero(rs.getString("genero"));
-            c.setTipoIdentificacion(rs.getString("tipoIdentificacion"));
-            c.setTelefono(rs.getString("telefono"));
-            c.setDireccion(rs.getString("direccion"));
-            c.setCorreo(rs.getString("correo"));
+            Parqueadero p = new Parqueadero();
+            p.setIdParqueadero(rs.getInt("idParqueadero"));
+            p.setDireccion(rs.getString("direccion"));
+            p.setPlazasTotales(rs.getInt("plazasCarro"),rs.getInt("plazasMoto"),rs.getInt("plazasBici"));
+            p.setPlazasCarro(rs.getInt("plazasCarro"));
+            p.setPlazasMoto(rs.getInt("plazasMoto"));
+            p.setPlazasBici(rs.getInt("plazasBici"));
+            p.setCarro(rs.getInt("carro"));
+            p.setMoto(rs.getInt("moto"));
+            p.setBici(rs.getInt("bici"));
+            p.setTarifaCarro(rs.getInt("tarifaCarro"));
+            p.setTarifaMoto(rs.getInt("tarifaMoto"));
+            p.setTarifaBici(rs.getInt("tarifaBici"));
             conexion.closeConnection();
-            return c;
+            return p;
         }else{
             conexion.closeConnection();
             return null;
