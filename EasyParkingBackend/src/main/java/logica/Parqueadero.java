@@ -53,7 +53,7 @@ public class Parqueadero {
     }
 
     public void setPlazasTotales(int plazasCarro, int plazasMoto, int plazasBici) {
-        this.plazasTotales = this.plazasCarro+this.plazasMoto+this.plazasBici;
+        this.plazasTotales = plazasCarro+plazasMoto+plazasBici;
     }
 
     public int getPlazasCarro() {
