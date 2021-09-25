@@ -1,0 +1,15 @@
+CREATE TABLE `parqueadero` (
+  `idParqueadero` int NOT NULL,
+  `direccion` longtext NOT NULL,
+  `plazasTotales` int NOT NULL,
+  `plazasCarro` int NOT NULL,
+  `plazasMoto` int NOT NULL,
+  `plazasBici` int NOT NULL,
+  `carro` int DEFAULT NULL,
+  `moto` int DEFAULT NULL,
+  `bici` int DEFAULT NULL,
+  `tarifaCarro` float NOT NULL,
+  `tarifaMoto` float NOT NULL,
+  `tarifaBici` float NOT NULL,
+  PRIMARY KEY (`idParqueadero`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Esta es la tabla que utilizaremos en el proyecto';
