@@ -1,15 +1,16 @@
 <%-- 
     Document   : peticionesParqueaderos
     Created on : 23/09/2021, 03:15:49 PM
-    Author     : CAMILO
+    Author     : CAMILO AND FREIRE AND JORGE
 --%>
 <%@page import="com.google.gson.Gson"%>
 <%@page import="java.util.List"%>
 <%@page import="logica.Parqueadero"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+
 <% 
-    String respuesta = "{";
+    String respuesta =  "{";
     String proceso = request.getParameter("proceso");
     Parqueadero c = new Parqueadero(); //se piden los parámetros del contacto que se quiere guardar
     
@@ -83,8 +84,6 @@
             }
 
             break;
-        //case "listarUnContacto":
-        //    break;
 
         default:
             respuesta += "\"ok\": false,";

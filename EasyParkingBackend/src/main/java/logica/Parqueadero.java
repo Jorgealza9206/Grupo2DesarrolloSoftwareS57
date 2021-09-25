@@ -13,7 +13,7 @@ import persistencia.ConexionBD;
 
 /**
  *
- * @author Alex
+ * @author Aquí el auto es alguien
  */
 public class Parqueadero {
     private int idParqueadero;
@@ -52,8 +52,13 @@ public class Parqueadero {
         return plazasTotales;
     }
 
+<<<<<<< HEAD
     public void setPlazasTotales(int plazasCarro, int plazasMoto, int plazasBici) {
         this.plazasTotales = plazasCarro+plazasMoto+plazasBici;
+=======
+    public void setPlazasTotales(int plazasTotales) {
+        this.plazasTotales = plazasTotales;
+>>>>>>> 8af913ea1eb4963932339829994aca1c873407c3
     }
 
     public int getPlazasCarro() {
@@ -206,7 +211,7 @@ public class Parqueadero {
             Parqueadero p = new Parqueadero();
             p.setIdParqueadero(rs.getInt("idParqueadero"));
             p.setDireccion(rs.getString("direccion"));
-            p.setPlazasTotales(rs.getInt("plazasCarro"),rs.getInt("plazasMoto"),rs.getInt("plazasBici"));
+            p.setPlazasTotales(rs.getInt("plazasTotales"));
             p.setPlazasCarro(rs.getInt("plazasCarro"));
             p.setPlazasMoto(rs.getInt("plazasMoto"));
             p.setPlazasBici(rs.getInt("plazasBici"));
@@ -230,7 +235,7 @@ public class Parqueadero {
             Parqueadero p = new Parqueadero();
             p.setIdParqueadero(rs.getInt("idParqueadero"));
             p.setDireccion(rs.getString("direccion"));
-            p.setPlazasTotales(rs.getInt("plazasCarro"),rs.getInt("plazasMoto"),rs.getInt("plazasBici"));
+            p.setPlazasTotales(rs.getInt("plazasTotales"));
             p.setPlazasCarro(rs.getInt("plazasCarro"));
             p.setPlazasMoto(rs.getInt("plazasMoto"));
             p.setPlazasBici(rs.getInt("plazasBici"));
@@ -247,5 +252,7 @@ public class Parqueadero {
             return null;
         }
     }
-    
+
+
+
 }
