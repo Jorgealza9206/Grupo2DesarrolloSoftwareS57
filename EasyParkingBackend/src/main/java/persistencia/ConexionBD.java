@@ -29,7 +29,7 @@ public class ConexionBD {
         db = "easyparking";
         url = "jdbc:mysql://" + host + "/" + db;
         username = "root";
-        password = "guatavita2017";
+        password = "Mimariajose0214**";
 
         try {
             //Asignación driver
