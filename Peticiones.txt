@@ -1,0 +1,20 @@
+Peticiones de prueba
+*** PARA GUARADAR ******
+
+http://localhost:8080/EasyParkingBK/peticionesParqueadero.jsp?proceso=guardarParqueadero&idParqueadero=02&direccion=Carrera5&plazasTotales=50&plazasCarro=35&plazasMoto=10&plazasBici=5&carro=20&moto=5&bici=4&tarifaCarro=3500&tarifaMoto=1500&tarifaBici=10005
+
+
+***** PARA ACTUALIZAR ******
+
+http://localhost:8080/EasyParkingBK/peticionesParqueadero.jsp?proceso=actualizarParqueadero&idParqueadero=70000&direccion=loactualic%C3%A92&plazasTotales=50&plazasCarro=35&plazasMoto=10&plazasBici=5&carro=20&moto=5&bici=4&tarifaCarro=3500&tarifaMoto=1500&tarifaBici=10005
+
+
+***** PARA BORRAR ******
+
+http://localhost:8080/EasyParkingBK/peticionesParqueadero.jsp?proceso=borrarParqueadero&idParqueadero=12
+
+
+***** PARA LISTAR LOS PARQUEADEROS ****** 
+
+http://localhost:8080/EasyParkingBK/peticionesParqueadero.jsp?proceso=listarParqueadero
+
