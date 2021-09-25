@@ -1,0 +1,33 @@
+body{
+    background-color: #53DD23;
+}
+
+form{
+    background-color: white;
+    width: 400px;
+    margin: 20px auto;
+    font-family: Arial, Helvetica, san-serif; 
+    padding: 30px 30px 30px 30px;
+    border-radius: 10px;
+}
+.titulo{
+    
+}
+#subtitulo{
+    font-size: 15;
+}
+label{
+    display: block;
+    margin-top: 20px;
+}
+input, textarea{
+    width: 100%;
+    height: 30px;
+    border: 1px solid #53DD23;
+    border-radius: 5px;
+}
+button{
+    margin-top: 50px;
+    background-color: #53DD23
+
+}

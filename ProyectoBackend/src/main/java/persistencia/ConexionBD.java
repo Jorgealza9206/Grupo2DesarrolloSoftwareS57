@@ -29,7 +29,7 @@ public class ConexionBD {
         db = "ejemplos";
         url = "jdbc:mysql://" + host + "/" + db;
         username = "root";
-        password = "";
+        password = "guatavita2017";
 
         try {
             //Asignación driver
