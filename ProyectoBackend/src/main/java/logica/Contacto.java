@@ -96,7 +96,7 @@ public class Contacto {
     
     public boolean guardarContacto(){
         ConexionBD conexion = new ConexionBD();
-        String sentencia = "INSERT INTO contactos(identificacion, nombre, apellido, genero,tipodeidentificacion,telefono,direccion,correo)"
+        String sentencia = "INSERT INTO contactos(identificacion,nombre,apellido,genero,tipoIdentificacion,telefono,direccion,correo)"
                 +"VALUES('"+this.identificacion+"','"+this.nombre+"','"+this.apellido+"','"+ this.genero + "','" + this.tipoIdentificacion + "',"
                 + "'" + this.telefono + "','" + this.direccion + "','" + this.correo +  "');  ";
         

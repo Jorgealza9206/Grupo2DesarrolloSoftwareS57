@@ -10,7 +10,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <% 
-String respuesta = "";
+String respuesta = "{";
 String proceso = request.getParameter("proceso"); //request HTTP 
 //a los request se les puede pasar parámetros
 //se va a validar el tipo de proceso
@@ -93,6 +93,10 @@ switch(proceso){
 respuesta += "}";
 response.setContentType("application/json;charset=iso-8859-1");
 out.print(respuesta);
+
+
+
+
         
 
 %>
