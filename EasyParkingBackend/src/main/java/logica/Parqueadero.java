@@ -156,7 +156,7 @@ public class Parqueadero {
     
     public boolean borrarParqueadero(int idParqueadero){
         ConexionBD conexion = new ConexionBD();
-        String sentencia = "DELETE FROM parqueadero WHERE idParqueadero = '" + this.idParqueadero+"'";
+        String sentencia = "DELETE FROM parqueadero WHERE idParqueadero = '" + idParqueadero+"'";
         
         if(conexion.setAutoCommitBD(false)){
             if(conexion.borrarBD(sentencia)){

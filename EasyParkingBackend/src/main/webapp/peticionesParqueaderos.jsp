@@ -43,9 +43,9 @@
             c.setIdParqueadero(Integer.parseInt(request.getParameter("idParqueadero")));//a este hay que convertirlo de entero a string
             c.setDireccion(request.getParameter("direccion"));
             c.setPlazasTotales(Integer.parseInt(request.getParameter("plazasCarro")),Integer.parseInt(request.getParameter("plazasMoto")),Integer.parseInt(request.getParameter("plazasBici")));
-            c.setPlazasCarro(Integer.parseInt(request.getParameter("PlazasCarro")));
-            c.setPlazasMoto(Integer.parseInt(request.getParameter("PlazasMoto")));
-            c.setPlazasBici(Integer.parseInt(request.getParameter("PlazasBici")));
+            c.setPlazasCarro(Integer.parseInt(request.getParameter("plazasCarro")));
+            c.setPlazasMoto(Integer.parseInt(request.getParameter("plazasMoto")));
+            c.setPlazasBici(Integer.parseInt(request.getParameter("plazasBici")));
             c.setCarro(Integer.parseInt(request.getParameter("carro")));
             c.setMoto(Integer.parseInt(request.getParameter("moto")));
             c.setBici(Integer.parseInt(request.getParameter("bici")));
@@ -64,7 +64,7 @@
 
             break;
         case "borrarParqueadero":
-            System.out.println("Eliminar contacto");
+            System.out.println("Eliminar parqueaderoo");
             int idParqueadero = Integer.parseInt(request.getParameter("idParqueadero"));
             if(c.borrarParqueadero(idParqueadero)){
              respuesta += "\"" + proceso + "\": true";  // el \ se usa para concatenar en json indicando que se hizo el proceso (true)
@@ -73,7 +73,7 @@
             }
 
             break;
-        case "listarParquedero":
+        case "listarParqueadero":
             System.out.println("Listar Parquederos");
             List<Parqueadero> listaParqueaderos = c.listarParqueadero();
             if(listaParqueaderos.isEmpty()){

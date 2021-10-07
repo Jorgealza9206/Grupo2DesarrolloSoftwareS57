@@ -119,7 +119,7 @@ public class Contacto {
     
     public boolean borrarContacto(int Identificacion){
         ConexionBD conexion = new ConexionBD();
-        String sentencia = "DELETE FROM contactos WHERE identificacion = '" + identificacion+"'";
+        String sentencia = "DELETE FROM contactos WHERE identificacion = '" + Identificacion+"'";
         
         if(conexion.setAutoCommitBD(false)){
             if(conexion.borrarBD(sentencia)){
