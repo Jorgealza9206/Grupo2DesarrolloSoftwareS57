@@ -57,7 +57,7 @@ switch(proceso){
 
         
         break;
-    case "eliminarContacto":
+    case "borrarContacto":
         System.out.println("Eliminar contacto");
         int identificacion = Integer.parseInt(request.getParameter("identificacion"));
         if(c.borrarContacto(identificacion)){
