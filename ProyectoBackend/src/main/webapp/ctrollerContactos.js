@@ -77,7 +77,7 @@ app.controller('controladorContactos', function ($scope, $http) {
             url: 'peticionesContacto.jsp',
             params: params
         }).then(function (respuesta) {
-            if (respuesta.data.eliminarContacto) {
+            if (respuesta.data.borrarContacto) {
                 alertBootstrap('Contacto eliminado exitosamente!', 'success');
                 $scope.listarContactos();
             } else {
@@ -115,9 +115,17 @@ app.controller('controladorContactos', function ($scope, $http) {
         });
     };
 
-    $scope.mostrarFormulario = function () {
+    $scope.mostrarFormulario = function (contacto) {
         $scope.mostrarListaContactos = false;
         $scope.actualizar = false;
+        $scope.identificacion = null;
+        $scope.nombre = null;
+        $scope.apellido = null;
+        $scope.genero = null;
+        $scope.tipoIdentificacion = null;
+        $scope.telefono = null;
+        $scope.direccion = null;
+        $scope.correo = null;
     };
 
     $scope.mostrarFormActualizar = function (contacto) {

@@ -73,15 +73,16 @@ app.controller('controladorParqueadero', function ($scope, $http) {
     $scope.borrarParqueadero = function () {
         let params = {
             proceso: 'borrarParqueadero',
-            identificacion: $scope.idParaEliminar
+            idParqueadero: $scope.idParaEliminar
         };
         $http({
             method: 'GET',
             url: 'peticionesParqueaderos.jsp',
             params: params
         }).then(function (respuesta) {
-            if (respuesta.data.eliminarParqueadero) {
+            if (respuesta.data.borrarParqueadero) {
                 alertBootstrap('Parqueadero eliminado exitosamente!', 'success');
+                //alert("Parqueadero eliminado exitosamente");
                 $scope.listarParqueadero();
             } else {
                 alert('Error al eliminar parqueadero');

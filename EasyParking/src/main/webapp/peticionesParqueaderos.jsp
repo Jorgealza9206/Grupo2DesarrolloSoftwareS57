@@ -64,7 +64,7 @@
 
             break;
         case "borrarParqueadero":
-            System.out.println("Eliminar parqueaderoo");
+            System.out.println("Eliminar parqueadero");
             int idParqueadero = Integer.parseInt(request.getParameter("idParqueadero"));
             if(c.borrarParqueadero(idParqueadero)){
              respuesta += "\"" + proceso + "\": true";  // el \ se usa para concatenar en json indicando que se hizo el proceso (true)
