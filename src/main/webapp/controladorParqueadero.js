@@ -55,6 +55,7 @@ $scope.inicio=true;
         $scope.creacion = false;
         $scope.administrar = false;
         $scope.actualizar = false;
+        $scope.inicio = false;
 
         let params = {
             proceso: 'listarParqueaderosCompleto'

@@ -414,7 +414,7 @@
                             <tbody>
                                 <tr class="table align-middle">
                                     <th> <span class="material-icons md-48">drive_eta</span> </th>
-                                    <td><h2>Número de plazas para Autos </h2></td>
+                                    <td><h2>Plazas Ocupadas para Autos </h2></td>
                                     <td><h2>{{parqueadero.plazasCarro}}</h2></td>
                                     <td><span class="material-icons md-48">euro_symbol</span></td>
                                     <td><h2>Tarifa fracción/hora Autos:</h2></td>
@@ -422,7 +422,7 @@
                                 </tr>
                                 <tr class="table align-middle">
                                     <th> <span class="material-icons md-48">two_wheeler</span> </th>
-                                    <td><h2>Número de plazas para Motos:</h2></td>
+                                    <td><h2>Plazas Ocupadas para Motos:</h2></td>
                                     <td><h2>{{parqueadero.plazasMoto}}</h2></td>
                                     <td><span class="material-icons md-48">euro_symbol</span></td>
                                     <td><h2>Tarifa fracción/hora Motos:</h2></td>
@@ -431,7 +431,7 @@
 
                                 <tr class="table align-middle">
                                     <th> <span class="material-icons md-48">directions_bike</span> </th>
-                                    <td><h2>Número de plazas para Bicicletas:</h2></td>
+                                    <td><h2>Plazas Ocupadas para Bicicletas:</h2></td>
                                     <td><h2>{{parqueadero.plazasBici}}</h2></td>
                                     <td><span class="material-icons md-48">euro_symbol</span></td>
                                     <td><h2>Tarifa fracción/hora Bicis:</h2></td>
