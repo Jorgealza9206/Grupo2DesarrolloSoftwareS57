@@ -6,6 +6,8 @@
 package persistencia;
 
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,127 +17,143 @@ public class ConexionBD {
 
     private String DB_driver = "";
     private String url = "";
+    private String db = "";
     private String host = "";
     private String username = "";
     private String password = "";
     public Connection conexion = null;
-    private ResultSet resultset = null;
-    private String db = "";
-    private Statement stmt = null;
+    private ResultSet rs = null; //atributo que retorne la consulta de la DB
+    private Statement stmt = null; //para ejecutar queries (sentencias)
 
-    public ConexionBD() {
-        DB_driver = "com.mysql.jdbc.Driver";
-        host = "localhost:3306";
+     public ConexionBD() {
+        host = "localhost:3306"; //BD local
         db = "easyparking";
         url = "jdbc:mysql://" + host + "/" + db;
         username = "root";
         password = "Mimariajose0214**";
-
+        
+        DB_driver = "com.mysql.cj.jdbc.Driver";
+        //Siempreo que se realice algo en la BD se hace en un bloque try/catch
         try {
-            //Asignación driver
-            Class.forName(DB_driver);
+            Class.forName(DB_driver); //Se asigna el driver
         } catch (ClassNotFoundException ex) {
-            System.out.println("Error de asignación del driver");
+            Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error al asignar driver");
         }
-
+        
+        //Conectar a la BD
         try {
-            conexion = DriverManager.getConnection(url, username, password);
-            System.out.println("Conexión exitosa");
+            conexion = DriverManager.getConnection(url,username,password); 
+            System.out.println("Conexion exitosa");
+                  
         } catch (SQLException ex) {
-            System.out.println("Error de asignación del driver");
+            Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error al conectar la BD");
         }
-    }
 
-    //Retornar conexión
-    public Connection getConnection() {
+    }
+    
+    // Retornar conexión a BD
+    public Connection getConnection(){
         return conexion;
     }
-
-    //Cerrar conexión
-    public void closeConnection() {
-        if (conexion != null) {
+    
+    //Cierra conexión a BD
+    public void closeConnection(){
+        if(conexion != null){ //se valida si hay una conexión, si es nulo da un null pointer exception
             try {
                 conexion.close();
             } catch (SQLException ex) {
-                System.out.println("Error al cerrar la conexión");
+                Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Error al cerra la conexion");
             }
         }
     }
-
-    //Consultar BD
-    public ResultSet consultarBD(String sentencia) {
+    
+    //Vamos a hacer un CRUD, se necesita un método para C/u de estos
+    //Consultar datos en BD
+    public ResultSet consultarBD(String sentencia){
+        //en sentencia se envia el codigo SQL
         try {
-            stmt = conexion.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            resultset = stmt.executeQuery(sentencia);
-        } catch (SQLException ex) {
-            System.out.println("Error al consultar BD");
+            stmt = conexion.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY); 
+            rs = stmt.executeQuery(sentencia);
+        } catch (SQLException | RuntimeException ex) {
+            Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error al hacer una consulta");
         }
-
-        return resultset;
+        return rs;
     }
-
-    public boolean insertarBD(String sentencia) {
-        try {
-            stmt = conexion.createStatement();
-            stmt.execute(sentencia);
-            return true;
-        } catch (SQLException ex) {
-            System.out.println("Error al insertar BD");
-            return false;
-        }
-
-    }
-
-    public boolean borrarBD(String sentencia) {
+    
+    //Insertar
+    public boolean insertarBD(String sentencia){
         try {
             stmt = conexion.createStatement();
             stmt.execute(sentencia);
             return true;
-        } catch (SQLException ex) {
-            System.out.println("Error al borrar BD");
+        } catch (SQLException | RuntimeException ex) {
+            Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error al insertar en la BD");
             return false;
         }
     }
+    
 
-    public boolean actualizarBD(String sentencia) {
+    
+    //Borrar
+    public boolean borrarBD(String sentencia){
         try {
             stmt = conexion.createStatement();
             stmt.execute(sentencia);
             return true;
-        } catch (SQLException ex) {
-            System.out.println("Error al actualizar BD");
+        } catch (SQLException | RuntimeException ex) {
+            Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error al borrar en la BD");
             return false;
         }
     }
-
-    public boolean setAutoCommitBD(boolean commit) {
+    
+    //Actualizar
+    public boolean actualizarBD(String sentencia){
+            try {
+            stmt = conexion.createStatement();
+            stmt.execute(sentencia);
+            return true;
+        } catch (SQLException | RuntimeException ex) {
+            Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error al actualizar en la BD");
+            return false;
+        }
+}
+    
+    public boolean setAutoCommitBD(boolean commit){
         try {
             conexion.setAutoCommit(commit);
             return true;
-        } catch (SQLException ex) {
-            System.out.println("Error al setAutoCommit BD");
+        } catch (SQLException | RuntimeException ex) {
+            System.out.println("Error en set Autocommit");
             return false;
         }
     }
-
-    public boolean commitBD() {
+    
+    public boolean commitBD(){
         try {
             conexion.commit();
             return true;
-        } catch (SQLException ex) {
-            System.out.println("Error al hacer commit BD");
+        } catch (SQLException | RuntimeException ex) {
+            System.out.println("Error en commit a la BD");
             return false;
         }
     }
-
-    public boolean rollbackBD() {
-        try {
+    
+    public boolean rollbackBD(){
+            try {
             conexion.rollback();
             return true;
-        } catch (SQLException ex) {
-            System.out.println("Error al hacer commit BD");
-            return false;
+        } catch (SQLException | RuntimeException ex) {
+            System.out.println("Error en rollback a la BD");
+           return false;
         }
-    }
+}
+   
 }
 

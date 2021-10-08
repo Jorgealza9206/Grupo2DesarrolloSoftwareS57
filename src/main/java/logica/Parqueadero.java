@@ -18,8 +18,11 @@ import java.sql.SQLException;
 public class Parqueadero {
     
     private int idParqueadero;
+    private String nombre_parqueadero;
     private String direccion;
+    
     private int plazasTotales;
+
     private int plazasCarro;
     private int plazasMoto;
     private int plazasBici;
@@ -41,10 +44,24 @@ public class Parqueadero {
         return direccion;
     }
 
+    public String getNombre_parqueadero() {
+        return nombre_parqueadero;
+    }
+
+    public void setNombre_parqueadero(String nombre_parqueadero) {
+        this.nombre_parqueadero = nombre_parqueadero;
+    }
+
     public int getPlazasTotales() {
         return plazasTotales;
     }
 
+    public void setPlazasTotales(int plazasTotales) {
+        this.plazasTotales = plazasTotales;
+    }
+
+
+    
     public int getPlazasCarro() {
         return plazasCarro;
     }
@@ -89,10 +106,8 @@ public class Parqueadero {
         this.direccion = direccion;
     }
 
-    public void setPlazasTotales(int plazasTotales) {
-        this.plazasTotales = plazasTotales;
-    }
 
+    
     public void setPlazasCarro(int plazasCarro) {
         this.plazasCarro = plazasCarro;
     }
@@ -133,23 +148,24 @@ public class Parqueadero {
     
     public boolean guardarParqueadero(){
         ConexionBD conexion = new ConexionBD();
-        String sentencia = "INSERT INTO parqueadero(idParqueadero, direccion, plazasTotales, plazasCarro, plazasMoto, plazasBici, carro, moto, bici, tarifaCarro, tarifaMoto, tarifaBici)"
-                + " VALUES ('" + this.idParqueadero + "','" + this.direccion + "',"
+        this.plazasTotales = this.plazasCarro + this.plazasMoto + this.plazasBici;
+        String sentencia = "INSERT INTO parqueadero(idParqueadero, nombre_parqueadero, direccion, plazasTotales, plazasCarro, plazasMoto, plazasBici, carro, moto, bici, tarifaCarro, tarifaMoto, tarifaBici)"
+                + " VALUES ('" + this.idParqueadero + "','"+ this.nombre_parqueadero + "','" + this.direccion + "',"
                 + "'" + this.plazasTotales + "','" + this.plazasCarro + "','" + this.plazasMoto + "',"
                 + "'" + this.plazasBici + "','" + this.carro + "','" + this.moto + "','" + this.bici + "',"
-                + "'" + this.tarifaCarro + "','" + this.tarifaMoto + "','" + this.tarifaBici +  "');  ";
+                + "'" + this.tarifaCarro + "','" + this.tarifaMoto + "','" + this.tarifaBici + "');  ";
         //Vamos a configurar el setAutocommit de la conexionBD a falso
-        if(conexion.setAutoCommitBD(false)){
-            if(conexion.insertarBD(sentencia)){
+        if (conexion.setAutoCommitBD(false)) {
+            if (conexion.insertarBD(sentencia)) {
                 conexion.commitBD();
                 conexion.closeConnection();
                 return true;
-            } else{ //si no logro insertar en la BD
+            } else { //si no logro insertar en la BD
                 conexion.rollbackBD();
                 conexion.closeConnection();
                 return false;
             }
-        } else{
+        } else {
             conexion.closeConnection();
             return false;
         }
@@ -176,7 +192,7 @@ public class Parqueadero {
     
     public boolean actualizarParqueadero(){
         ConexionBD conexion = new ConexionBD();
-        String sentencia = "UPDATE `parqueadero` SET direccion='" + this.direccion + "',plazasTotales='" + this.plazasTotales + "',plazasCarro='" + this.plazasCarro
+        String sentencia = "UPDATE parqueadero SET nombre_parqueadero='" + this.nombre_parqueadero + "',direccion='" + this.direccion + "',plazasTotales='" + (this.plazasCarro+this.plazasMoto+this.plazasBici) + "',plazasCarro='" + this.plazasCarro
                 + "',plazasMoto='" + this.plazasMoto + "',plazasBici='" + this.plazasBici + "',carro='" + this.carro + "',moto='" + this.moto
                 + "',bici='" + this.bici + "',tarifaCarro='" + this.tarifaCarro + "',tarifaMoto='" + this.tarifaMoto + "',tarifaBici='" + this.tarifaBici
                 +  "' WHERE idParqueadero=" + this.idParqueadero + ";";
@@ -198,16 +214,17 @@ public class Parqueadero {
         }
     }
     
-    public List<Parqueadero> listarParqueadero() throws SQLException{
+    public List<Parqueadero> listarParqueaderoCompleto() throws SQLException{
         ConexionBD conexion = new ConexionBD();
         String sentencia = "SELECT * FROM parqueadero ORDER BY idParqueadero ASC;";
-        List<Parqueadero> listaParqueadero = new ArrayList<>();
+        List<Parqueadero> listaParqueaderos = new ArrayList<>();
         ResultSet datos = conexion.consultarBD(sentencia);
         
         Parqueadero parqueadero;
         while (datos.next()) {
             parqueadero = new Parqueadero();
             parqueadero.setIdParqueadero(datos.getInt("idParqueadero"));
+            parqueadero.setNombre_parqueadero(datos.getString("nombre_parqueadero"));
             parqueadero.setDireccion(datos.getString("direccion"));
             parqueadero.setPlazasTotales(datos.getInt("plazasTotales"));
             parqueadero.setPlazasCarro(datos.getInt("plazasCarro"));
@@ -220,20 +237,23 @@ public class Parqueadero {
             parqueadero.setTarifaMoto(datos.getFloat("tarifaMoto"));
             parqueadero.setTarifaBici(datos.getFloat("tarifaBici"));
             
-            listaParqueadero.add(parqueadero);
+            listaParqueaderos.add(parqueadero);
             
         }
         conexion.closeConnection();
-        return listaParqueadero;
+        return listaParqueaderos;
     }
-    
-    public Parqueadero obtenerParqueadero(int idParqueadero) throws SQLException{
+
+ 
+    public Parqueadero obtenerParqueadero(String nombre_parqueadero) throws SQLException{
         ConexionBD conexion = new ConexionBD();
-        String sentencia = "SELECT * FROM parqueadero WHERE idParqueadero = '" + idParqueadero + "';";
+        String sentencia = "SELECT * FROM parqueadero WHERE nombre_parqueadero= '" + nombre_parqueadero + "';";
         ResultSet datos = conexion.consultarBD(sentencia);
         if(datos.next()){
             Parqueadero parqueadero = new Parqueadero();
             parqueadero.setIdParqueadero(datos.getInt("idParqueadero"));
+            parqueadero.setNombre_parqueadero(datos.getString("nombre_parqueadero"));
+            
             parqueadero.setDireccion(datos.getString("direccion"));
             parqueadero.setPlazasTotales(datos.getInt("plazasTotales"));
             parqueadero.setPlazasCarro(datos.getInt("plazasCarro"));
