@@ -213,7 +213,133 @@ public class Parqueadero {
             return false;
         }
     }
-    
+
+    public boolean agregarCarro() {
+        ConexionBD conexion = new ConexionBD();
+        String sentencia = "UPDATE parqueadero SET carro=carro+1 WHERE idParqueadero=" + this.idParqueadero + ";";
+
+        if (conexion.setAutoCommitBD(false)) {
+            if (conexion.actualizarBD(sentencia)) {
+                conexion.commitBD();
+                conexion.closeConnection();
+                return true;
+            } else {
+                conexion.rollbackBD();
+                conexion.closeConnection();
+                return false;
+            }
+
+        } else {
+            conexion.closeConnection();
+            return false;
+        }
+    }
+
+    public boolean agregarMoto() {
+        ConexionBD conexion = new ConexionBD();
+        String sentencia = "UPDATE parqueadero SET moto=moto+1 WHERE idParqueadero=" + this.idParqueadero + ";";
+
+        if (conexion.setAutoCommitBD(false)) {
+            if (conexion.actualizarBD(sentencia)) {
+                conexion.commitBD();
+                conexion.closeConnection();
+                return true;
+            } else {
+                conexion.rollbackBD();
+                conexion.closeConnection();
+                return false;
+            }
+
+        } else {
+            conexion.closeConnection();
+            return false;
+        }
+    }
+
+    public boolean agregarBici() {
+        ConexionBD conexion = new ConexionBD();
+        String sentencia = "UPDATE parqueadero SET bici=bici+1 WHERE idParqueadero=" + this.idParqueadero + ";";
+
+        if (conexion.setAutoCommitBD(false)) {
+            if (conexion.actualizarBD(sentencia)) {
+                conexion.commitBD();
+                conexion.closeConnection();
+                return true;
+            } else {
+                conexion.rollbackBD();
+                conexion.closeConnection();
+                return false;
+            }
+
+        } else {
+            conexion.closeConnection();
+            return false;
+        }
+    }
+
+    public boolean borrarCarro() {
+        ConexionBD conexion = new ConexionBD();
+        String sentencia = "UPDATE parqueadero SET carro=carro-1 WHERE idParqueadero=" + this.idParqueadero + ";";
+
+        if (conexion.setAutoCommitBD(false)) {
+            if (conexion.actualizarBD(sentencia)) {
+                conexion.commitBD();
+                conexion.closeConnection();
+                return true;
+            } else {
+                conexion.rollbackBD();
+                conexion.closeConnection();
+                return false;
+            }
+
+        } else {
+            conexion.closeConnection();
+            return false;
+        }
+    }
+
+    public boolean borrarMoto() {
+        ConexionBD conexion = new ConexionBD();
+        String sentencia = "UPDATE parqueadero SET moto=moto-1 WHERE idParqueadero=" + this.idParqueadero + ";";
+
+        if (conexion.setAutoCommitBD(false)) {
+            if (conexion.actualizarBD(sentencia)) {
+                conexion.commitBD();
+                conexion.closeConnection();
+                return true;
+            } else {
+                conexion.rollbackBD();
+                conexion.closeConnection();
+                return false;
+            }
+
+        } else {
+            conexion.closeConnection();
+            return false;
+        }
+    }
+
+    public boolean borrarBici() {
+        ConexionBD conexion = new ConexionBD();
+        String sentencia = "UPDATE parqueadero SET bici=bici-1 WHERE idParqueadero=" + this.idParqueadero + ";";
+
+        if (conexion.setAutoCommitBD(false)) {
+            if (conexion.actualizarBD(sentencia)) {
+                conexion.commitBD();
+                conexion.closeConnection();
+                return true;
+            } else {
+                conexion.rollbackBD();
+                conexion.closeConnection();
+                return false;
+            }
+
+        } else {
+            conexion.closeConnection();
+            return false;
+        }
+    }
+
     public List<Parqueadero> listarParqueaderoCompleto() throws SQLException{
         ConexionBD conexion = new ConexionBD();
         String sentencia = "SELECT * FROM parqueadero ORDER BY idParqueadero ASC;";
@@ -244,10 +370,39 @@ public class Parqueadero {
         return listaParqueaderos;
     }
 
- 
-    public Parqueadero obtenerParqueadero(String nombre_parqueadero) throws SQLException{
+    public List<Parqueadero> obtenerParqueadero(int idParqueadero) throws SQLException {
         ConexionBD conexion = new ConexionBD();
-        String sentencia = "SELECT * FROM parqueadero WHERE nombre_parqueadero= '" + nombre_parqueadero + "';";
+        String sentencia = "SELECT * FROM parqueadero WHERE idParqueadero='" + idParqueadero + "';";
+        List<Parqueadero> listaParqueaderos = new ArrayList<>();
+        ResultSet datos = conexion.consultarBD(sentencia);
+
+        Parqueadero parqueadero;
+        while (datos.next()) {
+            parqueadero = new Parqueadero();
+            parqueadero.setIdParqueadero(datos.getInt("idParqueadero"));
+            parqueadero.setNombre_parqueadero(datos.getString("nombre_parqueadero"));
+            parqueadero.setDireccion(datos.getString("direccion"));
+            parqueadero.setPlazasTotales(datos.getInt("plazasTotales"));
+            parqueadero.setPlazasCarro(datos.getInt("plazasCarro"));
+            parqueadero.setPlazasMoto(datos.getInt("plazasMoto"));
+            parqueadero.setPlazasBici(datos.getInt("plazasBici"));
+            parqueadero.setCarro(datos.getInt("carro"));
+            parqueadero.setMoto(datos.getInt("moto"));
+            parqueadero.setBici(datos.getInt("bici"));
+            parqueadero.setTarifaCarro(datos.getFloat("tarifaCarro"));
+            parqueadero.setTarifaMoto(datos.getFloat("tarifaMoto"));
+            parqueadero.setTarifaBici(datos.getFloat("tarifaBici"));
+
+            listaParqueaderos.add(parqueadero);
+
+        }
+        conexion.closeConnection();
+        return listaParqueaderos;
+    }
+ 
+    public Parqueadero obtenerParqueadero2(int idParqueadero) throws SQLException{
+        ConexionBD conexion = new ConexionBD();
+        String sentencia = "SELECT * FROM parqueadero WHERE idParqueadero='" + idParqueadero + "';";
         ResultSet datos = conexion.consultarBD(sentencia);
         if(datos.next()){
             Parqueadero parqueadero = new Parqueadero();

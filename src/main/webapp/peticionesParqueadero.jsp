@@ -42,7 +42,7 @@
             }
 
             break;
-            
+
         case "crearParqueadero":
             System.out.println("Guardar Parqueadero");
             //p.setIdParqueadero(Integer.parseInt(request.getParameter("idParqueadero"))); //a este hay que convertirlo de entero a string
@@ -68,15 +68,18 @@
 
         case "actualizarParqueadero":
             System.out.println("Actualizar Parqueadero");
-            //p.setIdParqueadero(Integer.parseInt(request.getParameter("idParqueadero"))); //a este hay que convertirlo de entero a string
+            p.setIdParqueadero(Integer.parseInt(request.getParameter("idParqueadero"))); //a este hay que convertirlo de entero a string
             p.setNombre_parqueadero(request.getParameter("nombre_parqueadero"));
             p.setDireccion(request.getParameter("direccion"));
             p.setPlazasCarro(Integer.parseInt(request.getParameter("plazasCarro"))); //a este hay que convertirlo de entero a string
             p.setPlazasMoto(Integer.parseInt(request.getParameter("plazasMoto"))); //a este hay que convertirlo de entero a string
-            p.setPlazasBici(Integer.parseInt(request.getParameter("plazasBici"))); //a este hay que convertirlo de entero a string
+            p.setPlazasBici(Integer.parseInt(request.getParameter("plazasBici")));
             p.setCarro(Integer.parseInt(request.getParameter("carro"))); //a este hay que convertirlo de entero a string
             p.setMoto(Integer.parseInt(request.getParameter("moto"))); //a este hay que convertirlo de entero a string
-            p.setBici(Integer.parseInt(request.getParameter("bici"))); //a este hay que convertirlo de entero a string
+            p.setBici(Integer.parseInt(request.getParameter("bici"))); 
+
+
+//a este hay que convertirlo de entero a string
             p.setTarifaCarro(Float.parseFloat(request.getParameter("tarifaCarro"))); //a este hay que convertirlo de entero a string
             p.setTarifaMoto(Float.parseFloat(request.getParameter("tarifaMoto"))); //a este hay que convertirlo de entero a string
             p.setTarifaBici(Float.parseFloat(request.getParameter("tarifaBici"))); //a este hay que convertirlo de entero a string 
@@ -88,6 +91,85 @@
             }
 
             break;
+
+        case "agregarCarro":
+            System.out.println("Agregar Carro");
+            p.setIdParqueadero(Integer.parseInt(request.getParameter("idParqueadero"))); //a este hay que convertirlo de entero a string
+             
+            if (p.agregarCarro()) {
+                //si guarda bien el contacto, se concatena otros datos para el json
+                respuesta += "\"" + proceso + "\": true";  // el \ se usa para concatenar en json indicando que se hizo el proceso (true)
+            } else {
+                respuesta += "\"" + proceso + "\": false";  // el \ se usa para concatenar en json indicando que NO se hizo el proceso (false)
+            }
+
+            break;
+
+        case "agregarMoto":
+            System.out.println("Agregar Moto");
+            p.setIdParqueadero(Integer.parseInt(request.getParameter("idParqueadero"))); //a este hay que convertirlo de entero a string
+             
+            if (p.agregarMoto()) {
+                //si guarda bien el contacto, se concatena otros datos para el json
+                respuesta += "\"" + proceso + "\": true";  // el \ se usa para concatenar en json indicando que se hizo el proceso (true)
+            } else {
+                respuesta += "\"" + proceso + "\": false";  // el \ se usa para concatenar en json indicando que NO se hizo el proceso (false)
+            }
+
+            break;            
+
+        case "agregarBici":
+            System.out.println("Agregar Bici");
+            p.setIdParqueadero(Integer.parseInt(request.getParameter("idParqueadero"))); //a este hay que convertirlo de entero a string
+             
+            if (p.agregarBici()) {
+                //si guarda bien el contacto, se concatena otros datos para el json
+                respuesta += "\"" + proceso + "\": true";  // el \ se usa para concatenar en json indicando que se hizo el proceso (true)
+            } else {
+                respuesta += "\"" + proceso + "\": false";  // el \ se usa para concatenar en json indicando que NO se hizo el proceso (false)
+            }
+
+            break;
+
+        case "borrarCarro":
+            System.out.println("borrar Carro");
+            p.setIdParqueadero(Integer.parseInt(request.getParameter("idParqueadero"))); //a este hay que convertirlo de entero a string
+             
+            if (p.borrarCarro()) {
+                //si guarda bien el contacto, se concatena otros datos para el json
+                respuesta += "\"" + proceso + "\": true";  // el \ se usa para concatenar en json indicando que se hizo el proceso (true)
+            } else {
+                respuesta += "\"" + proceso + "\": false";  // el \ se usa para concatenar en json indicando que NO se hizo el proceso (false)
+            }
+
+            break;
+
+        case "borrarMoto":
+            System.out.println("borrar Moto");
+            p.setIdParqueadero(Integer.parseInt(request.getParameter("idParqueadero"))); //a este hay que convertirlo de entero a string
+             
+            if (p.borrarMoto()) {
+                //si guarda bien el contacto, se concatena otros datos para el json
+                respuesta += "\"" + proceso + "\": true";  // el \ se usa para concatenar en json indicando que se hizo el proceso (true)
+            } else {
+                respuesta += "\"" + proceso + "\": false";  // el \ se usa para concatenar en json indicando que NO se hizo el proceso (false)
+            }
+
+            break;            
+
+        case "borrarBici":
+            System.out.println("borrar Bici");
+            p.setIdParqueadero(Integer.parseInt(request.getParameter("idParqueadero"))); //a este hay que convertirlo de entero a string
+             
+            if (p.borrarBici()) {
+                //si guarda bien el contacto, se concatena otros datos para el json
+                respuesta += "\"" + proceso + "\": true";  // el \ se usa para concatenar en json indicando que se hizo el proceso (true)
+            } else {
+                respuesta += "\"" + proceso + "\": false";  // el \ se usa para concatenar en json indicando que NO se hizo el proceso (false)
+            }
+
+            break;
+            
         case "borrarParqueadero":
             System.out.println("Borrar Parqueadero");
             int idParqueadero = Integer.parseInt(request.getParameter("idParqueadero"));
@@ -98,6 +180,7 @@
             }
 
             break;
+            
         case "listarParqueaderosCompleto":
             System.out.println("Listar  ");
             //List<Parqueadero> listaParqueadero = p.listarParqueaderoCompleto();
@@ -108,22 +191,19 @@
             }
 
             break;
-        //case "listarUnContacto":
-        //    break;
+            
+
         case "AdministrarParqueadero":
             System.out.println("Listar Administrar Parqueaderos  ");
-            String nombre = request.getParameter("nombre_parqueadero");
-            Parqueadero parqueadero = p.obtenerParqueadero(nombre);
-            if (p.obtenerParqueadero(nombre) == null) {
+            int nombre = Integer.parseInt(request.getParameter("idParqueadero"));
+            List<Parqueadero> listaParqueadero2 = p.obtenerParqueadero(nombre);
+            
                 //List<Parqueadero> listaParqueadero1 = p.listarParqueaderoCompleto();
-                if (listaParqueadero.isEmpty()) {
-                    respuesta += "\"" + proceso + "\": true Listado Vacio,\"Parqueadero\":[]"; //genera una lista vacía en el json
-                } else {
-                    respuesta += "\"" + proceso + "\": true no hay datos con ese nombre,\"Parqueadero\":[]"; //genera una lista vacía en el json
-                }
+            if (listaParqueadero2.isEmpty()) {
+                respuesta += "\"" + proceso + "\": true Base de datos vacia,\"Parqueadero\":[]"; //genera una lista vacía en el json
             } else {
-                respuesta += "\"" + proceso + "\": true si hay datos,\"Parqueadero\":" + new Gson().toJson(parqueadero); //guarda la lista en el json
-            }
+                respuesta += "\"" + proceso + "\": true,\"Parqueadero\":" + new Gson().toJson(listaParqueadero2); //guarda la lista en el json
+            } 
 
             break;
         //case "listarUnContacto":
