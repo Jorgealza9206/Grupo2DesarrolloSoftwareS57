@@ -89,7 +89,7 @@ $scope.inicio=true;
             params: params
         }).then(function (respuesta) {
             $scope.Parqueadero = respuesta.data.Parqueadero;
-            console.log($scope.parqueadero);            
+            console.log(Parqueadero);           
         });
         
         
@@ -181,6 +181,7 @@ $scope.inicio=true;
         }).then(function (respuesta) {
             if (respuesta.data.agregarCarro) {
                 alert('Carro añadido con exito');
+                console.log(respuesta.data.agregarCarro)
                 $scope.AdministrarParqueadero(idParqueadero);
             } else {
                 alert('No se pudo añadir');

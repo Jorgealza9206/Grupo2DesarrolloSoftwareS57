@@ -54,15 +54,63 @@
                 </div>
             </nav>
             
-            <div class="row auto mb-3" ng-show="inicio">
-                <div class="row-auto"><h1 class="align-middle"></h1><h1></h1></div>
-                <div class="row-auto"><h1></h1></div>
-                <div class="col-auto"><h1>BIENVENIDO A EASYPARKING</h1>
-                <div class="lead"><h2>Seleccione una de las opciones de la barra de navegación</h2></div>
+            <div class="row" ng-show="inicio">
+                <div class="row-auto"></div>
                 
-                <img src="https://www.enter.co/wp-content/uploads/2019/07/spot-parking-1-768x432.jpg" class="img-thumbnail align-middle">
+                <div class="row-auto" style="text-align: center">
+                    <div class="col-auto"></div>
+                    <div class="col-auto" style="background-color: gainsboro ;color: darkblue; text-align: center; border-top-color: 4" ><h1>BIENVENIDO A EASYPARKING 1.0</h1></div>                    
+                    <div class="col-auto"></div>
                 </div>
                 
+                <div class="col-auto" style="text-align: justify-all"><h2 style="text-align: justify-all">Esta aplicación le permitirá administrar varios parqueaderos al mismo tiempo desde un solo lugar, 
+                            permitiendo ingresar placas, fechas de ingreso y salida, generar facturas y llevar en tiempo real cuántos vehículos 
+                            según su tipo se encuentran ocupando plazas y cuántas están disponibles.</h2>
+                </div>
+
+                <div class="row">
+                    <div class="col text-center">
+                        <img src="https://www.enter.co/wp-content/uploads/2019/07/spot-parking-1-768x432.jpg" alt="" class="img-fluid img-thumbnail align-middle">
+                    </div>
+                </div>
+                <div class="row-auto" style="text-align: justify-all"></div>
+                <div class="row-auto" style="text-align: justify-all"><h2 style="text-align: justify-all">EasyParking es una aplicación 
+                        desarrollado por un equipo de profesionales capacitados y responsables, si gusta puede contactarnos
+                        en la siguiente información</h2>
+                    <div class="row-auto" style="background-color: cornsilk ;color: darkolivegreen; text-align: center" ><h2>Información de contacto</h2></div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col"><h2 style="text-align: justify-all">#</h2></th>
+                                <th scope="col"><h2 style="text-align: justify-all">Nombre</h2></th>
+                                <th scope="col"><h2 style="text-align: justify-all">Apellido</h2></th>
+                                <th scope="col"><h2 style="text-align: justify-all">Correo</h2></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row"><h2 style="text-align: justify-all"><span class="material-icons md-48">
+                                        perm_identity
+                                    </span></h2></th>
+                                <td><h2 style="text-align: justify-all">Freire</h2></td>
+                                <td><h2 style="text-align: justify-all">Palomino</h2></td>
+                                <td><h2 style="text-align: justify-all">freirepalomino@easyparking.com</h2></td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><h2 style="text-align: justify-all"><span class="material-icons md-48">
+                                        perm_identity
+                                    </span></h2></th>
+                                <td><h2 style="text-align: justify-all">Jorge</h2></td>
+                                <td><h2 style="text-align: justify-all">Alza</h2></td>
+                                <td><h2 style="text-align: justify-all">jorgealza@easyparking.com</h2></td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
 
             </div>
 

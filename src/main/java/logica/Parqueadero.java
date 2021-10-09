@@ -216,7 +216,7 @@ public class Parqueadero {
 
     public boolean agregarCarro() {
         ConexionBD conexion = new ConexionBD();
-        String sentencia = "UPDATE parqueadero SET carro=carro+1 WHERE idParqueadero=" + this.idParqueadero + ";";
+        String sentencia = "UPDATE parqueadero SET carro=carro+1 WHERE idParqueadero=" + this.idParqueadero + " AND plazasCarro>carro;";
 
         if (conexion.setAutoCommitBD(false)) {
             if (conexion.actualizarBD(sentencia)) {
@@ -237,7 +237,7 @@ public class Parqueadero {
 
     public boolean agregarMoto() {
         ConexionBD conexion = new ConexionBD();
-        String sentencia = "UPDATE parqueadero SET moto=moto+1 WHERE idParqueadero=" + this.idParqueadero + ";";
+        String sentencia = "UPDATE parqueadero SET moto=moto+1 WHERE idParqueadero=" + this.idParqueadero + " AND plazasMoto>moto;";
 
         if (conexion.setAutoCommitBD(false)) {
             if (conexion.actualizarBD(sentencia)) {
@@ -258,7 +258,7 @@ public class Parqueadero {
 
     public boolean agregarBici() {
         ConexionBD conexion = new ConexionBD();
-        String sentencia = "UPDATE parqueadero SET bici=bici+1 WHERE idParqueadero=" + this.idParqueadero + ";";
+        String sentencia = "UPDATE parqueadero SET bici=bici+1 WHERE idParqueadero=" + this.idParqueadero + " AND plazasBici>bici;";
 
         if (conexion.setAutoCommitBD(false)) {
             if (conexion.actualizarBD(sentencia)) {
@@ -279,7 +279,7 @@ public class Parqueadero {
 
     public boolean borrarCarro() {
         ConexionBD conexion = new ConexionBD();
-        String sentencia = "UPDATE parqueadero SET carro=carro-1 WHERE idParqueadero=" + this.idParqueadero + ";";
+        String sentencia = "UPDATE parqueadero SET carro=carro-1 WHERE idParqueadero=" + this.idParqueadero + " AND carro>'0';";
 
         if (conexion.setAutoCommitBD(false)) {
             if (conexion.actualizarBD(sentencia)) {
@@ -300,7 +300,7 @@ public class Parqueadero {
 
     public boolean borrarMoto() {
         ConexionBD conexion = new ConexionBD();
-        String sentencia = "UPDATE parqueadero SET moto=moto-1 WHERE idParqueadero=" + this.idParqueadero + ";";
+        String sentencia = "UPDATE parqueadero SET moto=moto-1 WHERE idParqueadero=" + this.idParqueadero + " AND moto>'0';";
 
         if (conexion.setAutoCommitBD(false)) {
             if (conexion.actualizarBD(sentencia)) {
@@ -321,7 +321,7 @@ public class Parqueadero {
 
     public boolean borrarBici() {
         ConexionBD conexion = new ConexionBD();
-        String sentencia = "UPDATE parqueadero SET bici=bici-1 WHERE idParqueadero=" + this.idParqueadero + ";";
+        String sentencia = "UPDATE parqueadero SET bici=bici-1 WHERE idParqueadero=" + this.idParqueadero + " AND bici>'0';";
 
         if (conexion.setAutoCommitBD(false)) {
             if (conexion.actualizarBD(sentencia)) {

@@ -1,1 +1,0 @@
-http://localhost:8080/EasyParkingBackend/peticionesParqueaderos.jsp?proceso=guardarParqueadero&idParqueadero=123&direccion=calle84&plazasTotales=50&plazasCarro=35&plazasMoto=10&plazasBici=5&carro=20&moto=5&bici=4&tarifaCarro=3500&tarifaMoto=1500&tarifaBici=1000
