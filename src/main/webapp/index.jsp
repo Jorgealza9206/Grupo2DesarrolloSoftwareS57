@@ -462,7 +462,7 @@
                             <tbody>
                                 <tr class="table align-middle">
                                     <th> <span class="material-icons md-48">drive_eta</span> </th>
-                                    <td><h2>Plazas Ocupadas para Autos </h2></td>
+                                    <td><h2>Plazas disponibles para Autos </h2></td>
                                     <td><h2>{{parqueadero.plazasCarro}}</h2></td>
                                     <td><span class="material-icons md-48">euro_symbol</span></td>
                                     <td><h2>Tarifa fracción/hora Autos:</h2></td>
@@ -470,7 +470,7 @@
                                 </tr>
                                 <tr class="table align-middle">
                                     <th> <span class="material-icons md-48">two_wheeler</span> </th>
-                                    <td><h2>Plazas Ocupadas para Motos:</h2></td>
+                                    <td><h2>Plazas disponibles para Motos:</h2></td>
                                     <td><h2>{{parqueadero.plazasMoto}}</h2></td>
                                     <td><span class="material-icons md-48">euro_symbol</span></td>
                                     <td><h2>Tarifa fracción/hora Motos:</h2></td>
@@ -479,7 +479,7 @@
 
                                 <tr class="table align-middle">
                                     <th> <span class="material-icons md-48">directions_bike</span> </th>
-                                    <td><h2>Plazas Ocupadas para Bicicletas:</h2></td>
+                                    <td><h2>Plazas disponibles para Bicicletas:</h2></td>
                                     <td><h2>{{parqueadero.plazasBici}}</h2></td>
                                     <td><span class="material-icons md-48">euro_symbol</span></td>
                                     <td><h2>Tarifa fracción/hora Bicis:</h2></td>
@@ -493,21 +493,21 @@
 
                             <tbody>
                                 <tr>
-                                    <th scope="row">Número de plazas disponibles para Autos: </th>
+                                    <th scope="row">Número de plazas ocupadas para Autos: </th>
                                     <td>{{parqueadero.carro}}</td>
                                     <td><button class="btn btn-primary" type="button" ng-click="agregarCarro(parqueadero.idParqueadero)">Entrada Carro</button></td>
                                     <td><button class="btn btn-primary" type="button" ng-click="borrarCarro(parqueadero.idParqueadero)">salida Carro</button></td>
                                 </tr>
 
                                 <tr>
-                                    <th scope="row">Número de plazas disponibles para Motocicletas: </th>
+                                    <th scope="row">Número de plazas ocupadas para Motocicletas: </th>
                                     <td>{{parqueadero.moto}}</td>
                                     <td><button class="btn btn-primary" type="button" ng-click="agregarMoto(parqueadero.idParqueadero)">Entrada Motocicleta</button></td>
                                     <td><button class="btn btn-primary" type="button" ng-click="borrarMoto(parqueadero.idParqueadero)">salida Motocicleta</button></td>
                                 </tr>
 
                                 <tr>
-                                    <th scope="row">Número de plazas disponibles para Bicicletas: </th>
+                                    <th scope="row">Número de plazas ocupadas para Bicicletas: </th>
                                     <td>{{parqueadero.bici}}</td>
                                     <td><button class="btn btn-primary" type="button" ng-click="agregarBici(parqueadero.idParqueadero)">Entrada Bici</button></td>
                                     <td><button class="btn btn-primary" type="button" ng-click="borrarBici(parqueadero.idParqueadero)">salida Bici</button></td>
